@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Account</title>
+    
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+            overflow: hidden; /* Prevent any overflow from appearing */
+        }
+
+        .container {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            background-color: rgb(228, 214, 187);
+            border-radius: 12px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+            width: 400px; /* Adjust the container width */
+        }
+
+        /* Logo container */
+        .logo {
+            margin-bottom: 30px;
+        }
+
+        .logo img {
+            width: 180px; /* Adjust logo size */
+            height: auto;
+        }
+
+        /* Button styling */
+        .btn-container {
+            display: flex; /* Use flexbox to align buttons horizontally */
+            gap: 20px; /* Space between buttons */
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: rgb(243, 130, 24);
+            color: rgb(228, 214, 187);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #fc0050;
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            background-color: #004085;
+            transform: translateY(0);
+        }
+
+        /* Small screen adjustments */
+        @media (max-width: 480px) {
+            .container {
+                width: 80%;
+                padding: 20px;
+            }
+
+            .logo img {
+                width: 150px;
+            }
+
+            .btn {
+                font-size: 16px;
+                padding: 12px 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Logo container -->
+        <div class="logo">
+            <img src="ZHERO.png" alt="Logo"> <!-- Replace with your logo -->
+        </div>
+
+        <!-- Buttons for User and Admin -->
+        <div class="btn-container">
+            <a href="login.html" class="btn">User</a>
+            <a href="adminlogin.html" class="btn">Admin</a>
+        </div>
+    </div>
+
+</body>
+
+</html>

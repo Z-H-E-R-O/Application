@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Login Form</title>
+    <link rel="stylesheet" href="login-style.css">
+</head>
+
+<body>
+    <div class="main">
+        <h1>LoginPage</h1>
+        <h3>Enter your login credentials</h3>
+
+        <!-- Form without an action attribute to handle redirection in JavaScript -->
+        <form id="loginForm" onsubmit="return validateForm()">
+            <label for="username">
+                Username:
+            </label>
+            <input type="text" id="username" name="username" 
+                   placeholder="Enter your Username" required>
+
+            <label for="password">
+                Password:
+            </label>
+            <input type="password" id="password" name="password" 
+                   placeholder="Enter your Password" required>
+
+            <div class="wrap">
+                <!-- Submit button -->
+                <button type="submit" class="btn" style="color: white;">Submit</button>
+            </div>
+        </form>
+
+        <p>Not registered?
+            <a href="#" style="text-decoration: none;">
+                Create an account
+            </a>
+        </p>
+    </div>
+
+    <!-- JavaScript for form validation and redirection -->
+    <script>
+        function validateForm() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Check if username and password are not empty
+            if (username === '' || password === '') {
+                alert('Both username and password are required!');
+                return false; // Prevent form submission
+            }
+            
+            // Redirect to homepage.html if validation is successful
+            window.location.href = 'homepage.html';
+            return false; // Prevent default form submission behavior
+        }
+    </script>
+</body>
+
+</html>

@@ -193,6 +193,7 @@ nav ul li a{
 
 .fwm-title{
     text-align: center;
+    color: #FF6347;
 }
 
 .fwm-title h2{
@@ -413,7 +414,7 @@ nav ul li a{
 /* About Us */
 
 .aboutbody{
-    background-color: #191919;
+    background-color: #ebdda2;
 }
 
 .about{
@@ -427,7 +428,7 @@ nav ul li a{
 }
 
 .abt-text{
-    width: 500px;
+    width: 1000px;
 }
 
 .abt-text h1{
@@ -459,8 +460,14 @@ nav ul li a{
     justify-content: space-around;
 }
 
+
+
+/* ABOUT US CONNECT US BUTTON */
 .connectbtn{
     display: inline-block;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
     background-color: #fc0050;
     font-size: 18px;
     color: white;
@@ -483,6 +490,62 @@ nav ul li a{
 }
 
 
+/* Styling for the Avatar Section */
+.creators {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.creators h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Avatar Container to align images horizontally */
+.avatar-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+/* Individual Avatar Style */
+.avatar {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.avatar img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #3498db;
+}
+
+/* Hover Effect on Avatars */
+.avatar:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+.avatar p {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Optional: Add some padding to the parent section */
+.main {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+
+/* ABOUT US SOCIAL ICONS */
 .social-icons a{
     height: 40px;
     width: 40px;
@@ -635,4 +698,324 @@ nav ul li a{
 }
 
 
+/* Hovering cards homepage */
+.philosophies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+    justify-content: center;
+}
 
+.philosophy-card {
+    border-top: 4px solid;
+    background-color: #ffffff;
+    padding: 0.8em;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    height: 600px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.philosophy-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.philosophy-card h2 {
+    color: #333;
+    margin-top: 0.5em;
+    font-size: 1.2em;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+button {
+    padding: 0.5em 1em;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Welcome Section */
+.welcome-section {
+    background-color: #f4f4f4;
+    padding: 50px 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    color: #333;
+}
+
+.welcome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.intro-text {
+    flex: 1;
+    max-width: 600px;
+    animation: fadeIn 2s ease-out;
+}
+
+.welcometitle {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1em;
+    color: #FF6347; /* Tomato color for emphasis */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: slideInFromLeft 1.5s ease-out;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards;
+}
+
+.cta-button {
+    padding: 15px 25px;
+    background-color: #32CD32; /* Lime Green */
+    color: #fff;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.cta-button:hover {
+    background-color: #28a745; /* Darker green on hover */
+    transform: scale(1.05);
+}
+
+.intro-image {
+    flex: 1;
+    max-width: 600px;
+    padding-left: 20px;
+    opacity: 0;
+    animation: fadeIn 3s ease-out forwards;
+}
+
+.intro-image img {
+    max-width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transform: scale(0.95);
+    animation: zoomIn 2s ease-out forwards;
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+
+/* website features explanation */
+section {
+    margin: 2em 0;
+    padding: 1em;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+.what-we-do-section {
+    background-color: #f9f9f9;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-header {
+    margin-bottom: 40px;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    color: #FF6347; /* Tomato color */
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.section-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+}
+
+.feature-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 300px;
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.feature-card h3 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.feature-card p {
+    font-size: 1.1rem;
+    color: #777;
+    line-height: 1.6;
+}
+
+.icon-container img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #FF6347; /* Tomato background for icons */
+    padding: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* General Section Styling */
+.fwm {
+    padding: 2rem;
+    background-color: #f4f4f4;
+}
+
+/* Title Styling */
+.fwm-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.fwm-title h2 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Carousel Container */
+.carousel-container, .carousel-solutions {
+    display: flex;
+    overflow-x: auto;
+    gap: 1.5rem;
+    padding: 1rem;
+    justify-content: center;
+}
+
+.carousel-item {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 280px; /* Fixed width */
+    flex-shrink: 0; /* Prevents shrinking of individual items */
+    transition: transform 0.3s ease;
+}
+
+.carousel-item:hover {
+    transform: translateY(-5px); /* Slightly lifts the item on hover */
+}
+
+.carousel-item h4 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.carousel-item p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Video Styling */
+iframe {
+    margin-top: 2rem;
+    border: none;
+    border-radius: 8px;
+}
+
+/* Add scrollbar styles if needed */
+.carousel-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.carousel-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+}
+
+.carousel-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}

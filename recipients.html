@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>Admin - Recipients</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -98,30 +98,30 @@
         }
     </style>
     <script>
-        // Fetch donations from localStorage and render them
-        function renderDonations() {
-            const donations = JSON.parse(localStorage.getItem("donations")) || [];
-            const tableBody = document.getElementById("donorTableBody");
+        // Fetch recipients from localStorage and render them
+        function renderRecipients() {
+            const recipients = JSON.parse(localStorage.getItem("recipients")) || [];
+            const tableBody = document.getElementById("recipientsTableBody");
             tableBody.innerHTML = ""; // Clear existing rows
 
-            donations.forEach(donation => {
+            recipients.forEach(recipient => {
                 const row = document.createElement("tr");
                 row.innerHTML = `
-                    <td>${donation.name}</td>
-                    <td>${donation.email}</td>
-                    <td>${donation.phone}</td>
-                    <td>${donation.address}</td>
-                    <td>${donation.category}</td>
-                    <td>${donation.quantity}</td>
-                    <td>${donation.foodDate}</td>
-                    <td>${donation.note}</td>
+                    <td>${recipient.name}</td>
+                    <td>${recipient.email}</td>
+                    <td>${recipient.phone}</td>
+                    <td>${recipient.address}</td>
+                    <td>${recipient.category}</td>
+                    <td>${recipient.quantity}</td>
+                    <td>${recipient.needDate}</td>
+                    <td>${recipient.note || "N/A"}</td>
                 `;
                 tableBody.appendChild(row);
             });
         }
 
-        // Load data when the page loads
-        document.addEventListener("DOMContentLoaded", renderDonations);
+        // Load recipients when the page loads
+        document.addEventListener("DOMContentLoaded", renderRecipients);
     </script>
 </head>
 <body>
@@ -141,25 +141,24 @@
 
     <!-- Main Content -->
     <div class="main-content">
-        <header>Admin Dashboard - Food Donations</header>
-
+        <header>Admin Dashboard - Recipients</header>
         <div class="container">
-            <h2>Donation History</h2>
+            <h2>Accepted Food Requests</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>Donor Name</th>
+                        <th>Name</th>
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Address</th>
                         <th>Category</th>
                         <th>Quantity (kg)</th>
-                        <th>Prep Date & Time</th>
+                        <th>Need Date & Time</th>
                         <th>Note</th>
                     </tr>
                 </thead>
-                <tbody id="donorTableBody">
-                    <!-- Rows will be populated here -->
+                <tbody id="recipientsTableBody">
+                    <!-- Rows will be dynamically populated -->
                 </tbody>
             </table>
         </div>

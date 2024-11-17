@@ -143,23 +143,27 @@
             });
         }
 
-        // Handle Accept or Decline action
         function handleAction(index, action) {
-            const requests = JSON.parse(localStorage.getItem("foodRequests")) || [];
+    const requests = JSON.parse(localStorage.getItem("foodRequests")) || [];
+    const recipients = JSON.parse(localStorage.getItem("recipients")) || [];
 
-            if (action === "accept") {
-                alert(`Request from ${requests[index].name} has been accepted.`);
-            } else if (action === "decline") {
-                alert(`Request from ${requests[index].name} has been declined.`);
-            }
+    if (action === "accept") {
+        alert(`Request from ${requests[index].name} has been accepted.`);
+        
+        // Add to recipients
+        recipients.push(requests[index]);
+        localStorage.setItem("recipients", JSON.stringify(recipients));
+    } else if (action === "decline") {
+        alert(`Request from ${requests[index].name} has been declined.`);
+    }
 
-            // Remove the request from the list
-            requests.splice(index, 1);
-            localStorage.setItem("foodRequests", JSON.stringify(requests)); // Update localStorage
+    // Remove the request from the list
+    requests.splice(index, 1);
+    localStorage.setItem("foodRequests", JSON.stringify(requests)); // Update localStorage
 
-            // Re-render the table
-            renderRequests();
-        }
+    // Re-render the table
+    renderRequests();
+}
 
         // Load requests when the page loads
         document.addEventListener("DOMContentLoaded", renderRequests);
@@ -173,13 +177,13 @@
         
         
         <ul>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="donors.html">Donors</a></li>
-            <li><a href="recipients.html">Recipients</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
             <li><a href="donations.html">Donations</a></li>
+            <li><a href="donors.html">Donation History</a></li>
+            <li><a href="recipients.html">Recipients</a></li>
             <li><a href="food-request.html">Food Request</a></li>
-            <li><a href="request-history.html">Request History</a></li>
-            <li><a href="food-stock.html">Food Stock</a></li>
+            
         </ul>
     </div>
 

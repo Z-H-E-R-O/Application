@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Food</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script>
+        // Save form data to localStorage
+        function saveRequestData(event) {
+            event.preventDefault(); // Prevent form from submitting the traditional way
+
+            // Fetch form values
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phonenum").value;
+            const address = document.getElementById("address").value;
+            const category = document.querySelector('input[name="myfood"]:checked')?.value || "";
+            const quantity = document.getElementById("quantity").value;
+            const needDate = document.getElementById("needDate").value;
+            const note = document.getElementById("note").value;
+
+            // Validation for phone number
+            if (phone.length < 10 || isNaN(phone)) {
+                alert("Please enter a valid 10-digit phone number.");
+                return;
+            }
+
+            // Create a food request object
+            const request = {
+                name,
+                email,
+                phone,
+                address,
+                category,
+                quantity,
+                needDate,
+                note
+            };
+
+            // Get existing requests from localStorage or create a new array
+            const requests = JSON.parse(localStorage.getItem("foodRequests")) || [];
+            requests.push(request); // Add the new request
+            localStorage.setItem("foodRequests", JSON.stringify(requests)); // Save back to localStorage
+
+            // Show success message
+            alert("Your food request has been successfully recorded!");
+
+            // Reset the form
+            document.getElementById("requestForm").reset();
+        }
+    </script>
+</head>
+
+
+<body class="register-body">
+    <nav>
+        <a href="index.html">
+            <img src="ZHERO.png" class="logo" alt="Logo" title="ZHERO">
+        </a>
+        <ul class="navbar">
+            <li>
+                <a href="index.html">Home</a>
+                <a href="#fwmanage">What We Do</a>
+                <a href="donate.html">Donate</a>
+                <a href="request.html">Request</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="adminlogin.html">Admin</a>
+            </li>
+        </ul>
+    </nav>
+
+    <section class="registration">
+        <div class="register-form">
+            <h1>Request <span>Food</span></h1>
+            <p>Let us help you meet your needs with compassion and care.</p> <br>
+            <form id="requestForm" onsubmit="saveRequestData(event)">
+                <input type="text" name="myname1" placeholder="Your Name" id="name" required>
+                <input type="email" name="myemail" placeholder="Your Email" id="email" required>
+                <input type="tel" name="myphone" placeholder="Your Phone No." id="phonenum" required>
+                <input type="text" name="myadd" placeholder="Delivery Address" id="address" required>
+                <h4>Food Category</h4>
+                <label><input type="radio" name="myfood" value="Fruits and Vegetables" required> Fruits and Vegetables</label><br>
+                <label><input type="radio" name="myfood" value="Protein Sources"> Protein Sources</label><br>
+                <label><input type="radio" name="myfood" value="Grains and Starches"> Grains and Starches</label><br>
+                <label><input type="radio" name="myfood" value="Canned Goods"> Canned Goods</label><br>
+                <h4>Quantity (in Kg)</h4>
+                <input type="number" name="quantity" id="quantity" required>
+                <h4>Date and Time of Need</h4>
+                <input type="datetime-local" name="needDate" id="needDate" required><br><br>
+                <textarea name="note" id="note" cols="2" rows="3" placeholder="Special Note or Additional Information"></textarea><br><br>
+                <input type="checkbox" name="t&c" id="terms" checked required> I accept the Terms & Conditions.<br>
+                <input type="submit" value="Submit Request" class="submitbtn">
+            </form>
+        </div>
+    </section>
+</body>
+</html>

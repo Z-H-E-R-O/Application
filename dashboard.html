@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Waste Management Dashboard</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Body Styling */
+    body {
+      display: flex;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    /* Sidebar Styling */
+    .sidebar {
+      width: 250px;
+      height: 100vh;
+      background-color: #28a745;
+      color: #fff;
+      padding: 20px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      padding: 15px 20px;
+      border-bottom: 1px solid #3cb056;
+    }
+
+    .sidebar ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      display: block;
+    }
+
+    .sidebar ul li a:hover {
+      background-color: #3cb056;
+      border-radius: 5px;
+    }
+
+    .sidebar ul li a.active {
+      background-color: #3cb056;
+      border-radius: 5px;
+    }
+
+    /* Main Content Styling */
+    .main-content {
+      margin-left: 250px;
+      padding: 20px;
+      width: calc(100% - 250px);
+    }
+
+    .header {
+      background-color: #28a745;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    /* Food Categories Grid */
+    .food-categories {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .category-card {
+      background-color: #fff;
+      padding: 20px;
+      text-align: center;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      font-size: 18px;
+    }
+
+    .category-card .icon {
+      color: #28a745;
+      font-size: 24px;
+    }
+
+    .category-card .count {
+      font-size: 22px;
+      margin-top: 10px;
+      color: #333;
+    }
+
+    /* Footer Summary */
+    .summary {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .summary-item {
+      text-align: center;
+      flex: 1;
+    }
+
+    .summary-item + .summary-item {
+      border-left: 1px solid #ddd;
+    }
+
+    .summary-item h4 {
+      color: #333;
+      font-size: 20px;
+    }
+
+    .summary-item p {
+      font-size: 16px;
+      margin-top: 5px;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Populate food counts dynamically
+      const foodData = {
+        fruits: 20,
+        vegetables: 15,
+        grains: 12,
+        dairy: 8,
+        meat: 6,
+        bakedGoods: 10,
+        meals: 18,
+        others: 5,
+      };
+
+      for (const [key, value] of Object.entries(foodData)) {
+        document.getElementById(`${key}Count`).textContent = value;
+      }
+
+      // Populate other summary data dynamically
+      const summaryData = {
+        totalDonors: 12,
+        totalRequests: 7,
+        approvedRequests: 5,
+        totalFoodUnits: 200,
+      };
+
+      for (const [key, value] of Object.entries(summaryData)) {
+        document.getElementById(key).textContent = value;
+      }
+    });
+  </script>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>Admin Panel</h2>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="donations.html">Donations</a></li>
+        <li><a href="donors.html">Donation History</a></li>
+        <li><a href="recipients.html">Recipients</a></li>
+        <li><a href="food-request.html">Food Request</a></li>
+        
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="header">
+      Food Waste Management Dashboard
+    </div>
+
+    <div class="food-categories">
+      <!-- Food Categories -->
+      <div class="category-card">
+        <div>Fruits</div>
+        <div class="icon">🍎</div>
+        <div class="count" id="fruitsCount">0</div>
+      </div>
+      <div class="category-card">
+        <div>Vegetables</div>
+        <div class="icon">🥦</div>
+        <div class="count" id="vegetablesCount">0</div>
+      </div>
+      <div class="category-card">
+        <div>Grains</div>
+        <div class="icon">🌾</div>
+        <div class="count" id="grainsCount">0</div>
+      </div>
+      <div class="category-card">
+        <div>Dairy</div>
+        <div class="icon">🧀</div>
+        <div class="count" id="dairyCount">0</div>
+      </div>
+      <div class="category-card">
+        <div>Meat</div>
+        <div class="icon">🍖</div>
+        <div class="count" id="meatCount">0</div>
+      </div>
+      <div class="category-card">
+        <div>Baked Goods</div>
+        <div class="icon">🍞</div>
+        <div class="count" id="bakedGoodsCount">0</div>
+      </div>
+      <div class="category-card">
+        <div>Prepared Meals</div>
+        <div class="icon">🍲</div>
+        <div class="count" id="mealsCount">0</div>
+      </div>
+      <div class="category-card">
+        <div>Others</div>
+        <div class="icon">🥡</div>
+        <div class="count" id="othersCount">0</div>
+      </div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-item">
+        <h4>Total Donors</h4>
+        <p id="totalDonors">0</p>
+      </div>
+      <div class="summary-item">
+        <h4>Total Requests</h4>
+        <p id="totalRequests">0</p>
+      </div>
+      <div class="summary-item">
+        <h4>Approved Requests</h4>
+        <p id="approvedRequests">0</p>
+      </div>
+      <div class="summary-item">
+        <h4>Total Food Units (kg)</h4>
+        <p id="totalFoodUnits">0</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

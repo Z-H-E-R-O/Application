@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Food Requests</title>
+    <style>
+    
+    body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            margin: 0;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #28a745;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 20px 0;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            padding: 15px 20px;
+            border-bottom: 1px solid #3cb056;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #3cb056;
+            border-radius: 5px;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            width: calc(100% - 250px);
+        }
+
+        header {
+            background-color: #28a745;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background-color: #28a745;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .action-btn {
+            padding: 8px 12px;
+            margin: 0 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .accept-btn {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .decline-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+    </style>
+    <script>
+        // Fetch food requests from localStorage and render them
+        function renderRequests() {
+            const requests = JSON.parse(localStorage.getItem("foodRequests")) || [];
+            const tableBody = document.getElementById("requestTableBody");
+            tableBody.innerHTML = ""; // Clear existing rows
+
+            requests.forEach((request, index) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${request.name}</td>
+                    <td>${request.email}</td>
+                    <td>${request.phone}</td>
+                    <td>${request.address}</td>
+                    <td>${request.category}</td>
+                    <td>${request.quantity}</td>
+                    <td>${request.needDate}</td>
+                    <td>${request.note || "N/A"}</td>
+                    <td>
+                        <button class="action-btn accept-btn" onclick="handleAction(${index}, 'accept')">Accept</button>
+                        <button class="action-btn decline-btn" onclick="handleAction(${index}, 'decline')">Decline</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Handle Accept or Decline action
+        function handleAction(index, action) {
+            const requests = JSON.parse(localStorage.getItem("foodRequests")) || [];
+
+            if (action === "accept") {
+                alert(`Request from ${requests[index].name} has been accepted.`);
+            } else if (action === "decline") {
+                alert(`Request from ${requests[index].name} has been declined.`);
+            }
+
+            // Remove the request from the list
+            requests.splice(index, 1);
+            localStorage.setItem("foodRequests", JSON.stringify(requests)); // Update localStorage
+
+            // Re-render the table
+            renderRequests();
+        }
+
+        // Load requests when the page loads
+        document.addEventListener("DOMContentLoaded", renderRequests);
+    </script>
+</head>
+<body>
+    
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        
+        
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="donors.html">Donors</a></li>
+            <li><a href="recipients.html">Recipients</a></li>
+            <li><a href="donations.html">Donations</a></li>
+            <li><a href="food-request.html">Food Request</a></li>
+            <li><a href="request-history.html">Request History</a></li>
+            <li><a href="food-stock.html">Food Stock</a></li>
+        </ul>
+    </div>
+
+<div class="main-content">
+        <header>Admin Dashboard - Food Donations</header>
+    <div class="container">
+
+        <h2>Food Request Data</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Category</th>
+                    <th>Quantity (kg)</th>
+                    <th>Need Date & Time</th>
+                    <th>Note</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="requestTableBody">
+                <!-- Rows will be dynamically populated -->
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -137,37 +137,77 @@
       margin-top: 5px;
     }
   </style>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      // Populate food counts dynamically
-      const foodData = {
-        fruits: 20,
-        vegetables: 15,
-        grains: 12,
-        dairy: 8,
-        meat: 6,
-        bakedGoods: 10,
-        meals: 18,
-        others: 5,
-      };
+ <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Fetch data from localStorage
+    const donations = JSON.parse(localStorage.getItem("donations")) || [];
+    const requests = JSON.parse(localStorage.getItem("foodRequests")) || [];
+    const recipients = JSON.parse(localStorage.getItem("recipients")) || []; // Fetch approved requests
 
-      for (const [key, value] of Object.entries(foodData)) {
-        document.getElementById(`${key}Count`).textContent = value;
-      }
+    // Aggregate food categories (for donations)
+    const foodCategories = {
+        fruits: 0,
+        vegetables: 0,
+        grains: 0,
+        dairy: 0,
+        meat: 0,
+        bakedGoods: 0,
+        meals: 0,
+        others: 0,
+    };
 
-      // Populate other summary data dynamically
-      const summaryData = {
-        totalDonors: 12,
-        totalRequests: 7,
-        approvedRequests: 5,
-        totalFoodUnits: 200,
-      };
+     // Broader category mappings to specific categories
+     const categoryMapping = {
+        "Fruits and Vegetables": ["fruits", "vegetables"],
+        "Protein Sources": ["meat", "dairy"],
+        "Grains and Starches": ["grains", "bakedGoods"],
+        "Canned Goods": ["others"],
+    };
 
-      for (const [key, value] of Object.entries(summaryData)) {
-        document.getElementById(key).textContent = value;
-      }
+    // Process each donation to assign quantities dynamically
+    donations.forEach(donation => {
+        if (donation.category) {
+            // Match the donation's category to a broader group
+            for (const [group, specificCategories] of Object.entries(categoryMapping)) {
+                if (donation.category === group) {
+                    // Add quantities to the relevant specific categories
+                    specificCategories.forEach(specificCategory => {
+                        if (foodCategories[specificCategory] !== undefined) {
+                            foodCategories[specificCategory] += parseFloat(donation.quantity || 0);
+                        }
+                    });
+                }
+            }
+        }
     });
-  </script>
+
+    // Update category counts in the DOM
+    for (const [key, value] of Object.entries(foodCategories)) {
+        const countElement = document.getElementById(`${key}Count`);
+        if (countElement) {
+            countElement.textContent = value;
+        }
+    }
+
+    // Aggregate summary data (include requests and recipients)
+    const summaryData = {
+        totalDonors: new Set(donations.map(donation => donation.name)).size, // Unique donors
+        totalRequests: requests.length, // Total requests
+        approvedRequests: recipients.length, // Total approved requests (recipients)
+        totalFoodUnits: donations.reduce((total, donation) => total + parseFloat(donation.quantity || 0), 0), // Total donated food units
+    };
+
+    // Update summary data in the DOM
+    for (const [key, value] of Object.entries(summaryData)) {
+        const summaryElement = document.getElementById(key);
+        if (summaryElement) {
+            summaryElement.textContent = value;
+        }
+    }
+});
+
+</script>
+
 </head>
 <body>
   <!-- Sidebar -->

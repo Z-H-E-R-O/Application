@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            margin: 0;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #28a745;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 20px 0;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            padding: 15px 20px;
+            border-bottom: 1px solid #3cb056;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #3cb056;
+            border-radius: 5px;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            width: calc(100% - 250px);
+        }
+
+        header {
+            background-color: #28a745;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background-color: #28a745;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+    <script>
+        // Fetch donations from localStorage and render them
+        function renderDonations() {
+            const donations = JSON.parse(localStorage.getItem("donations")) || [];
+            const tableBody = document.getElementById("donorTableBody");
+            tableBody.innerHTML = ""; // Clear existing rows
+
+            donations.forEach(donation => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${donation.name}</td>
+                    <td>${donation.email}</td>
+                    <td>${donation.phone}</td>
+                    <td>${donation.address}</td>
+                    <td>${donation.category}</td>
+                    <td>${donation.quantity}</td>
+                    <td>${donation.foodDate}</td>
+                    <td>${donation.note}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Load data when the page loads
+        document.addEventListener("DOMContentLoaded", renderDonations);
+    </script>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="donors.html">Donors</a></li>
+            <li><a href="recipients.html">Recipients</a></li>
+            <li><a href="donations.html">Donations</a></li>
+            <li><a href="food-request.html">Food Request</a></li>
+            <li><a href="request-history.html">Request History</a></li>
+            <li><a href="food-stock.html">Food Stock</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <header>Admin Dashboard - Food Donations</header>
+
+        <div class="container">
+            <h2>Donor Data</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Donor Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Category</th>
+                        <th>Quantity (kg)</th>
+                        <th>Prep Date & Time</th>
+                        <th>Note</th>
+                    </tr>
+                </thead>
+                <tbody id="donorTableBody">
+                    <!-- Rows will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

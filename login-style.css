@@ -5,7 +5,7 @@ body {
     font-family: sans-serif;
     line-height: 1.5;
     min-height: 100vh;
-    background-image: url();
+    background-image: url('https://miro.medium.com/v2/resize:fit:2000/1*EGs8B7HJc1iKZRssyJonVg.jpeg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -14,7 +14,7 @@ body {
 }
 
 .main {
-    background-color: #00000069;
+    background-color: #f3f2f269;
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     padding: 10px 20px;
@@ -24,7 +24,7 @@ body {
 }
 
 h1 {
-    color: #ffd4a3;
+    color: #e29235e8;
 }
 
 label {
@@ -33,7 +33,7 @@ label {
     margin-top: 10px;
     margin-bottom: 5px;
     text-align: left;
-    color: #ffd993;
+    color: #e29235e8;
     font-weight: bold;
 }
 
@@ -71,6 +71,3 @@ button:hover {
     align-items: center;
 }
 
-#userRegistrationFields {
-    display: none; /* Hide registration fields by default */
-}

@@ -45,7 +45,7 @@
 
 nav {
     width: 100%;
-    position: fixed;
+    position:relative;
     backdrop-filter: blur(10px);
     background: rgb(228, 214, 187); /* Set the background color here */
     box-shadow: 5px 5px 30px rgba(0, 0, 0, 15%);
@@ -414,7 +414,7 @@ nav ul li a{
 /* About Us */
 
 .aboutbody{
-    background-color: #ebdda2;
+    background-color: #000000;
 }
 
 .about{
@@ -433,7 +433,7 @@ nav ul li a{
 
 .abt-text h1{
     font-size: 70px;
-    color: white;
+    color: rgb(0, 0, 0);
     margin-bottom: 20px;
     letter-spacing: 1px;
 }
@@ -444,7 +444,7 @@ nav ul li a{
 }
 
 .abt-text p{
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 24px;
     margin-bottom: 45px;
     line-height: 30px;
@@ -483,6 +483,7 @@ nav ul li a{
     background-color: transparent;
     border: 2px solid #fc0050;
     transform: scale(1.1);
+    color:#000000;
 }
 
 .connect-section{
@@ -567,7 +568,7 @@ nav ul li a{
 /* Contact Us */
 
 .contactbody{
-    background-color: #101010;
+    background-color: #000000;
     background-repeat: no-repeat;
     background-size: cover;
     
@@ -581,7 +582,7 @@ nav ul li a{
 
 .contact-form h1{
     font-size: 80px;
-    color: white;
+    color: rgb(0, 0, 0);
     margin-bottom: 20px;
 }
 
@@ -590,7 +591,7 @@ nav ul li a{
 }
 
 .contact-form p{
-    color: white;
+    color: rgb(255, 251, 251);
     line-height: 30px;
     letter-spacing: 1px;
     font-size: 23px;
@@ -605,7 +606,7 @@ nav ul li a{
     outline: none;
     background-color: #191919;
     font-size: 20px;
-    color: white;
+    color: rgb(255, 255, 255);
     margin-bottom: 10px;
     border-radius: 10px;
 }
@@ -627,6 +628,7 @@ nav ul li a{
     border: 2px solid #fc0050;
     background-color: transparent;
     transform: scale(1.1);
+    color:#000000;
 
 }
 
@@ -647,7 +649,7 @@ nav ul li a{
 
 .register-form h1{
     font-size: 80px;
-    color: white;
+    color: rgb(0, 0, 0);
     margin-bottom: 20px;
 }
 .register-form h1 span{
@@ -655,12 +657,12 @@ nav ul li a{
 }
 
 .register-form{
-    color: white;
+    color: rgb(68, 67, 67);
     font-size: 20px;
 }
 
 .register-form form input{
-    color: white;
+    color: rgb(255, 255, 255);
     padding: 17px;
     background-color: #191919;
     font-size: 20px;
@@ -695,6 +697,7 @@ nav ul li a{
     border: 2px solid #fc0050;
     background-color: transparent;
     transform: scale(1.1);
+    color: #000000;
 }
 
 

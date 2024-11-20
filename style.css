@@ -309,7 +309,7 @@ nav ul li a{
     border: 2px solid transparent;
     border-radius: 20px;
     color: white;
-    background-color: rgb(21, 74, 74);
+    background-color: rgb(242, 2, 2);
     padding: 14px 30px;
     cursor: pointer;
     font-size: 17px;
@@ -320,9 +320,9 @@ nav ul li a{
 }
 
 .newsletter form input:last-child:hover{
-    border: 2px solid rgb(21, 74, 74);
+    border: 2px solid rgb(0, 0, 0);
     background-color: white;
-    color: rgb(21, 74, 74);
+    color: rgb(242, 2, 2);
 }
 
 
@@ -330,7 +330,10 @@ nav ul li a{
 
 .footer{
     margin-top: 80px;
-    background-color: rgb(21, 74, 74);
+    background-color: rgb(228, 214, 187);
+    width: 100%;
+    position: relative;
+
 }
 
 .foot{
@@ -348,7 +351,7 @@ nav ul li a{
     margin-top: 30px;
     font-size: 20px;
     font-weight: 600;
-    color: white;
+    color: rgb(177, 12, 12);
     margin-bottom: 30px;
     position: relative;
 }
@@ -361,7 +364,7 @@ nav ul li a{
     width: 70px;
     left: 0;
     bottom: -7px;
-    background: white;
+    background: rgb(53, 52, 52);
 }
 
 .footlinks ul li{
@@ -370,7 +373,7 @@ nav ul li a{
 
 .footlinks ul li a{
     font-size: 17px;
-    color: #dddddd;
+    color: rgb(110, 6, 6);
     display: block;
     transition: ease 0.30s;
 }
@@ -385,7 +388,7 @@ nav ul li a{
     margin: 4px;
     height: 40px;
     width: 40px;
-    color: rgb(21, 74, 74);
+    color: rgb(0, 0, 0);
     background-color: white;
     display: inline-flex;
     justify-content: center;
@@ -406,7 +409,7 @@ nav ul li a{
 
 .end p{
     font-size: 15px;
-    color: white;
+    color: rgb(75, 1, 1);
     letter-spacing: 1px;
     font-weight: 300;
 }
@@ -436,6 +439,7 @@ nav ul li a{
     color: rgb(0, 0, 0);
     margin-bottom: 20px;
     letter-spacing: 1px;
+    font-style: italic;
 }
 
 .abt-text h1 span{
@@ -444,7 +448,7 @@ nav ul li a{
 }
 
 .abt-text p{
-    color: rgb(0, 0, 0);
+    color: rgb(44, 43, 43);
     font-size: 24px;
     margin-bottom: 45px;
     line-height: 30px;
@@ -591,7 +595,7 @@ nav ul li a{
 }
 
 .contact-form p{
-    color: rgb(255, 251, 251);
+    color: rgb(65, 62, 62);
     line-height: 30px;
     letter-spacing: 1px;
     font-size: 23px;

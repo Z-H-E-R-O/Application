@@ -38,9 +38,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
-
-
+    
 }
 
 nav {
@@ -58,6 +56,7 @@ nav .logo{
     width: 60px;
     height: 57px;
     margin-left: 8%;
+  
 }
 
 nav ul li{
@@ -172,7 +171,7 @@ nav ul li a{
     font-weight: 500;
 }
 .container-box h4 span{
-    color: #fc0050;
+    color: rgb(242, 2, 2);
     font-weight:600;
 }
 .container-box img{
@@ -417,7 +416,7 @@ nav ul li a{
 /* About Us */
 
 .aboutbody{
-    background-color: #000000;
+    background-color: #ffffff;
 }
 
 .about{
@@ -443,7 +442,7 @@ nav ul li a{
 }
 
 .abt-text h1 span{
-    color: #fc0050;
+    color: rgb(242, 2, 2);
     letter-spacing: 1px;
 }
 
@@ -472,7 +471,7 @@ nav ul li a{
     text-align: center;
     justify-content: center;
     align-items: center;
-    background-color: #fc0050;
+    background-color: rgb(242, 2, 2);
     font-size: 18px;
     color: white;
     font-weight: bold;
@@ -485,7 +484,7 @@ nav ul li a{
 
 .connectbtn:hover{
     background-color: transparent;
-    border: 2px solid #fc0050;
+    border: 2px solid #000000;
     transform: scale(1.1);
     color:#000000;
 }
@@ -572,7 +571,7 @@ nav ul li a{
 /* Contact Us */
 
 .contactbody{
-    background-color: #000000;
+    background-color: #ffffff;
     background-repeat: no-repeat;
     background-size: cover;
     
@@ -591,7 +590,7 @@ nav ul li a{
 }
 
 .contact-form h1 span{
-    color:#fc0050;
+    color:rgb(242, 2, 2);
 }
 
 .contact-form p{
@@ -617,7 +616,7 @@ nav ul li a{
 
 .contact-form form .submit-btn{
     display: inline-block;
-    background-color: #fc0050;
+    background-color: rgb(242, 2, 2);
     font-size: 27px;
     font-weight: 600px;
     border: 2px solid transparent;
@@ -629,7 +628,7 @@ nav ul li a{
 }
 
 .contact-form form .submit-btn:hover{
-    border: 2px solid #fc0050;
+    border: 2px solid #080808;
     background-color: transparent;
     transform: scale(1.1);
     color:#000000;
@@ -639,7 +638,7 @@ nav ul li a{
 /* Donation Register Form */
 
 .register-body{
-    background-color: #101010;
+    background-color: #ffffff;
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -657,7 +656,7 @@ nav ul li a{
     margin-bottom: 20px;
 }
 .register-form h1 span{
-    color: rgb(32, 101, 101);
+    color: rgb(242, 2, 2);
 }
 
 .register-form{
@@ -680,14 +679,14 @@ nav ul li a{
     font-size: 22px;
     font-weight: 500;
     margin-top: 20px;
-    color: #fc0050;
+    color: rgb(242, 2, 2);
    
 }
 
 
 .register-form form .submitbtn{
     display: inline-block;
-    background-color: #fc0050;
+    background-color: rgb(242, 2, 2);
     font-size: 27px;
     font-weight: 600px;
     border: 2px solid transparent;
@@ -698,7 +697,7 @@ nav ul li a{
 }
 
 .register-form form .submitbtn:hover{
-    border: 2px solid #fc0050;
+    border: 2px solid #000000;
     background-color: transparent;
     transform: scale(1.1);
     color: #000000;

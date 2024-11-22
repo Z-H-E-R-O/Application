@@ -136,6 +136,7 @@
       font-size: 16px;
       margin-top: 5px;
     }
+    
   </style>
  <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -183,7 +184,7 @@
 
     // Update category counts in the DOM
     for (const [key, value] of Object.entries(foodCategories)) {
-        const countElement = document.getElementById(${key}Count);
+        const countElement = document.getElementById(`${key}Count`);
         if (countElement) {
             countElement.textContent = value;
         }

@@ -15,8 +15,9 @@
             const email = document.getElementById("email").value;
             const phone = document.getElementById("phonenum").value;
             const address = document.getElementById("address").value;
-            const category = document.querySelector('input[name="myfood"]:checked')?.value || "";
+            const category = document.querySelector('input[name="myfood"]:checked').value;
             const quantity = document.getElementById("quantity").value;
+            const item = document.getElementById("item").value;
             const foodDate = document.getElementById("fooddate").value;
             const note = document.getElementById("note").value;
 
@@ -34,6 +35,7 @@
                 address,
                 category,
                 quantity,
+                item,
                 foodDate,
                 note
             };
@@ -59,7 +61,8 @@
         <ul class="navbar">
             <li>
                 <a href="index.html">Home</a>
-                <a href="#fwmanage">What We Do</a>
+                <a href="foodguide.html">Food Donation Guide</a>
+                <a href="donate.html">Donate</a>
                 <a href="request.html">Request</a>
                 <a href="about.html">About Us</a>
                 <a href="contact.html">Contact Us</a>
@@ -71,20 +74,27 @@
     <section class="registration">
         <div class="register-form">
             <h1>Donate <span>Food</span></h1>
-            <p>It's not how much we give, but how much love we put into giving!</p> <br>
+            <p><i>It's not how much we give, but how much love we put into giving!</i></p> <br>
             <form id="donationForm" onsubmit="saveDonationData(event)">
                 <input type="text" name="myname1" placeholder="Your Name" id="name" required>
                 <input type="email" name="myemail" placeholder="Your Email" id="email" required>
                 <input type="tel" name="myphone" placeholder="Your Phone No." id="phonenum" required>
                 <input type="text" name="myadd" placeholder="Collection Address" id="address" required>
                 <h4>Category</h4>
-                <label><input type="radio" name="myfood" value="Fruits and Vegetables" required> Fruits and Vegetables</label><br>
+                <h5><i>Unsure about the food categories? Check the <b>Food Donation Guide</b> located in the navigation bar.</i></h5>
+                <br>
+                <label><input type="radio" name="myfood" value="Fresh Produce" required> Fresh Produce</label><br>
                 <label><input type="radio" name="myfood" value="Protein Sources"> Protein Sources</label><br>
                 <label><input type="radio" name="myfood" value="Grains and Starches"> Grains and Starches</label><br>
-                <label><input type="radio" name="myfood" value="Canned Goods"> Canned Goods</label><br>
-                <h4>Quantity (in Kg)</h4>
-                <input type="number" name="quantity" id="quantity" required>
-                <h4>Food Preparation Date and Time</h4>
+                <label><input type="radio" name="myfood" value="Canned and Packaged Goods"> Canned and Packaged Goods</label><br>
+                <label><input type="radio" name="myfood" value="Snacks and Pantry Staples" required> Snacks and Pantry Staples</label><br>
+                <label><input type="radio" name="myfood" value="Beverages" required> Beverages</label><br>
+                <label><input type="radio" name="myfood" value="Baby and Specialty Items" required> Baby and Specialty Items</label><br>
+                <h4>Quantity (in Kg) If Applicable*</h4>
+                <input type="number" name="quantity" id="quantity">
+                <h4>Quantity (Number of Items) If Applicable*</h4>
+                <input type="number" name="item" id="item">
+                <h4>Date and Time of Preparation/Manufacture</h4>
                 <input type="datetime-local" name="fooddate" id="fooddate" required><br><br>
                 <textarea name="note" id="note" cols="2" rows="3" placeholder="Special Note"></textarea><br><br>
                 <input type="checkbox" name="t&c" id="terms" checked required> I accept the Terms & Conditions.<br>

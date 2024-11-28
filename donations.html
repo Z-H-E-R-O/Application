@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: rgb(228, 214, 187);
             display: flex;
             margin: 0;
         }
@@ -16,8 +16,8 @@
         .sidebar {
             width: 250px;
             height: 100vh;
-            background-color: #28a745;
-            color: white;
+            background-color: rgb(39, 38, 37);
+            color: rgb(255, 255, 255);
             position: fixed;
             top: 0;
             left: 0;
@@ -36,19 +36,27 @@
 
         .sidebar ul li {
             padding: 15px 20px;
-            border-bottom: 1px solid #3cb056;
+            border-bottom: 1px solid #4d2f2f;
         }
 
         .sidebar ul li a {
-            color: white;
+            color: rgb(240, 240, 240);
             text-decoration: none;
             font-weight: bold;
             display: block;
         }
 
         .sidebar ul li a:hover {
-            background-color: #3cb056;
+            background-color:rgb(243, 130, 24);
             border-radius: 5px;
+        }
+
+        .sidebar ul li a.active {
+            color: rgb(243, 130, 24);
+            background: rgb(255, 255, 255);
+            box-shadow: 5px 10px 30px rgba(85, 85, 85, 0.2);
+            border-radius: 5px;
+
         }
 
         /* Main Content Styles */
@@ -59,10 +67,13 @@
         }
 
         header {
-            background-color: #28a745;
-            color: white;
+            background-color: rgb(243, 130, 24);
+            color: rgb(39, 38, 37);
             padding: 20px;
             text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            
         }
 
         .container {
@@ -90,6 +101,12 @@
             margin-bottom: 20px;
         }
 
+        .total-items {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -103,7 +120,7 @@
         }
 
         th {
-            background-color: #28a745;
+            background-color:rgb(243, 130, 24);
             color: white;
         }
 
@@ -115,81 +132,7 @@
             background-color: #f1f1f1;
         }
     </style>
-    <script>
-        // Fetch donations from localStorage and render them
-        function renderDonations(filterCategory = "", filterDonor = "") {
-            const donations = JSON.parse(localStorage.getItem("donations")) || [];
-            const tableBody = document.getElementById("donationTableBody");
-            tableBody.innerHTML = ""; // Clear existing rows
-
-            // Filter donations by category or donor
-            const filteredDonations = donations.filter(donation => {
-                return (
-                    (!filterCategory || donation.category === filterCategory) &&
-                    (!filterDonor || donation.name === filterDonor)
-                );
-            });
-
-            // Display filtered donations
-            filteredDonations.forEach(donation => {
-                const row = document.createElement("tr");
-                row.innerHTML = `
-                    <td>${donation.name}</td>
-                    <td>${donation.email}</td>
-                    <td>${donation.phone}</td>
-                    <td>${donation.address}</td>
-                    <td>${donation.category}</td>
-                    <td>${donation.quantity}</td>
-                    <td>${donation.item}</td>
-                    <td>${donation.foodDate}</td>
-                    <td>${donation.note}</td>
-                `;
-                tableBody.appendChild(row);
-            });
-
-            // Update total donations counter
-            const totalQuantity = filteredDonations.reduce((total, donation) => total + parseFloat(donation.quantity || 0), 0);
-            document.getElementById("totalDonations").innerText = `Total Donations: ${totalQuantity} kg`;
-
-            // Update total donations counter
-         const totalItem = filteredDonations.reduce((total, donation) => total + parseFloat(donation.item|| 0), 0);
-            document.getElementById("totalDonations").innerText = `Total Donations: ${totalItem} kg`;
-        }
-
-
-        // Handle filter changes
-        function handleFilterChange() {
-            const categoryFilter = document.getElementById("categoryFilter").value;
-            const donorFilter = document.getElementById("donorFilter").value;
-            renderDonations(categoryFilter, donorFilter);
-        }
-
-        // Load data when the page loads
-        document.addEventListener("DOMContentLoaded", () => {
-            renderDonations();
-
-            // Populate filter dropdowns
-            const donations = JSON.parse(localStorage.getItem("donations")) || [];
-            const categories = [...new Set(donations.map(donation => donation.category))];
-            const donors = [...new Set(donations.map(donation => donation.name))];
-
-            const categoryFilter = document.getElementById("categoryFilter");
-            categories.forEach(category => {
-                const option = document.createElement("option");
-                option.value = category;
-                option.textContent = category;
-                categoryFilter.appendChild(option);
-            });
-
-            const donorFilter = document.getElementById("donorFilter");
-            donors.forEach(donor => {
-                const option = document.createElement("option");
-                option.value = donor;
-                option.textContent = donor;
-                donorFilter.appendChild(option);
-            });
-        });
-    </script>
+    
 </head>
 <body>
     <!-- Sidebar -->
@@ -198,8 +141,8 @@
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="donations.html">Donations</a></li>
-            <li><a href="donors.html">Donation History</a></li>
+            <li><a href="donations.html" class="active">Donations</a></li>
+          
             <li><a href="recipients.html">Recipients</a></li>
             <li><a href="food-request.html">Food Request</a></li>
             
@@ -222,7 +165,8 @@
                 </select>
             </div>
 
-            <div class="total-donations" id="totalDonations">Total Donations: 0 kg</div>
+            <div class="total-donations" id="totalDonations">Total Donations (kg): 0 kg</div>
+            <div class="total-items" id="totalItems">Total Items (per piece): 0 </b></div>
 
             <table>
                 <thead>
@@ -244,5 +188,7 @@
             </table>
         </div>
     </div>
+
+    <script src="donations-script.js"></script>
 </body>
 </html>

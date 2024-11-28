@@ -8,7 +8,7 @@
     
     body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color:rgb(228, 214, 187);;
             display: flex;
             margin: 0;
         }
@@ -17,7 +17,7 @@
         .sidebar {
             width: 250px;
             height: 100vh;
-            background-color: #28a745;
+            background-color: rgb(39, 38, 37);
             color: white;
             position: fixed;
             top: 0;
@@ -37,7 +37,7 @@
 
         .sidebar ul li {
             padding: 15px 20px;
-            border-bottom: 1px solid #3cb056;
+            border-bottom: 1px solid#4d2f2f;
         }
 
         .sidebar ul li a {
@@ -48,8 +48,15 @@
         }
 
         .sidebar ul li a:hover {
-            background-color: #3cb056;
+            background-color:rgb(243, 130, 24);
             border-radius: 5px;
+        }
+
+        .sidebar ul li a.active {
+         color: rgb(243, 130, 24);
+         background: rgb(255, 255, 255);
+         box-shadow: 5px 10px 30px rgba(85, 85, 85, 0.2);
+        border-radius: 5px;
         }
 
         /* Main Content Styles */
@@ -60,7 +67,7 @@
         }
 
         header {
-            background-color: #28a745;
+            background-color:rgb(243, 130, 24);
             color: white;
             padding: 20px;
             text-align: center;
@@ -86,7 +93,7 @@
         }
 
         th {
-            background-color: #28a745;
+            background-color:rgb(243, 130, 24);
             color: white;
         }
 
@@ -116,58 +123,6 @@
             color: white;
         }
     </style>
-    <script>
-        // Fetch food requests from localStorage and render them
-        function renderRequests() {
-            const requests = JSON.parse(localStorage.getItem("foodRequests")) || [];
-            const tableBody = document.getElementById("requestTableBody");
-            tableBody.innerHTML = ""; // Clear existing rows
-
-            requests.forEach((request, index) => {
-                const row = document.createElement("tr");
-                row.innerHTML = `
-                    <td>${request.name}</td>
-                    <td>${request.email}</td>
-                    <td>${request.phone}</td>
-                    <td>${request.address}</td>
-                    <td>${request.category}</td>
-                    <td>${request.quantity}</td>
-                    <td>${request.needDate}</td>
-                    <td>${request.note || "N/A"}</td>
-                    <td>
-                        <button class="action-btn accept-btn" onclick="handleAction(${index}, 'accept')">Accept</button>
-                        <button class="action-btn decline-btn" onclick="handleAction(${index}, 'decline')">Decline</button>
-                    </td>
-                `;
-                tableBody.appendChild(row);
-            });
-        }
-
-        function handleAction(index, action) {
-    const requests = JSON.parse(localStorage.getItem("foodRequests")) || [];
-    const recipients = JSON.parse(localStorage.getItem("recipients")) || [];
-
-    if (action === "accept") {
-        alert(`Request from ${requests[index].name} has been accepted.`);
-        
-        // Add to recipients
-        recipients.push(requests[index]);
-        localStorage.setItem("recipients", JSON.stringify(recipients));
-    } else if (action === "decline") {
-        alert(`Request from ${requests[index].name} has been declined.`);
-    }
-
-    // Remove the request from the list
-    requests.splice(index, 1);
-    localStorage.setItem("foodRequests", JSON.stringify(requests)); // Update localStorage
-
-    // Re-render the table
-    renderRequests();
-}
-
-        // Load requests when the page loads
-        document.addEventListener("DOMContentLoaded", renderRequests);
-    </script>
 </head>
 <body>
     
@@ -180,9 +135,9 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="dashboard.html">Dashboard</a></li>
             <li><a href="donations.html">Donations</a></li>
-            <li><a href="donors.html">Donation History</a></li>
+           
             <li><a href="recipients.html">Recipients</a></li>
-            <li><a href="food-request.html">Food Request</a></li>
+            <li><a href="food-request.html" class="active">Food Request</a></li>
             
         </ul>
     </div>
@@ -212,5 +167,7 @@
         </table>
     </div>
 </div>
+
+<script src="foodrequest-script.js"></script>
 </body>
 </html>

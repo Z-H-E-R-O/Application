@@ -39,7 +39,7 @@ body {
 
 .sidebar ul {
   list-style: none;
-  padding: 0;
+  padding: 5px;
 }
 
 .sidebar ul li {
@@ -60,8 +60,10 @@ body {
 }
 
 .sidebar ul li a.active {
-  background-color: #e4dcdc;
-  border-radius: 5px;
+  color: rgb(243, 130, 24);
+    background: rgb(255, 255, 255);
+    box-shadow: 5px 10px 30px rgba(85, 85, 85, 0.2);
+    border-radius: 5px;
 }
 
 /* Main Content Styling */
@@ -73,7 +75,7 @@ body {
 
 .header {
   background-color: rgb(243, 130, 24);
-  color: #fff;
+  color: #ffffff;
   padding: 15px;
   text-align: center;
   font-size: 20px;
@@ -105,7 +107,7 @@ body {
 }
 
 .category-card .icon {
-  color: #a08383;
+  color: #ffffff;
   font-size: 28px;
 }
 
@@ -124,7 +126,7 @@ body {
   text-align: center;
   margin: 5px;
   padding: 20px;
-  background-color: #f8f8f8;
+  background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -194,81 +196,7 @@ body {
 
 }
 </style>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // Fetch data from localStorage
-    const donations = JSON.parse(localStorage.getItem("donations")) || [];
-    const requests = JSON.parse(localStorage.getItem("foodRequests")) || [];
-    const recipients = JSON.parse(localStorage.getItem("recipients")) || []; // Fetch approved requests
 
-    // Aggregate food categories (for donations)
-    const foodCategories = {
-      freshProduce: 0,
-      proteinSources: 0,
-      grainsAndStarches: 0,
-      cannedAndPackagedGoods: 0,
-      snacksAndPantryStaples: 0,
-      beverages: 0,
-      babyAndSpecialtyItems: 0,
-      personalCareAndHousehold: 0,
-    };
-
-     // Broader category mappings to specific categories
-     const categoryMapping = {
-        "Fresh Produce": ["freshProduce"],
-        "Protein Sources": ["proteinSources"],
-        "Grains and Starches": ["grainsAndStarches"],
-        "Canned and Packaged Goods": ["cannedAndPackagedGoods"],
-        "Snacks and Pantry Staples": ["snacksAndPantryStaples"],
-        "Beverages": ["beverages"],
-        "Baby and Specialty Items": ["babyAndSpecialtyItems"],
-    };
-
-    // Process each donation to assign quantities dynamically
-    donations.forEach(donation => {
-        if (donation.category) {
-            // Match the donation's category to a broader group
-            for (const [group, specificCategories] of Object.entries(categoryMapping)) {
-                if (donation.category === group) {
-                    // Add quantities to the relevant specific categories
-                    specificCategories.forEach(specificCategory => {
-                        if (foodCategories[specificCategory] !== undefined) {
-                            foodCategories[specificCategory] += parseFloat(donation.quantity || 0);
-                            foodCategories[specificCategory] += parseFloat(donation.item || 0);
-                        }
-                    });
-                }
-            }
-        }
-    });
-
-    // Update category counts in the DOM
-    for (const [key, value] of Object.entries(foodCategories)) {
-        const countElement = document.getElementById(`${key}Count`);
-        if (countElement) {
-            countElement.textContent = value;
-        }
-    }
-
-    // Aggregate summary data (include requests and recipients)
-    const summaryData = {
-        totalDonors: new Set(donations.map(donation => donation.name)).size, // Unique donors
-        totalRequests: requests.length, // Total requests
-        approvedRequests: recipients.length, // Total approved requests (recipients)
-        totalFoodUnits: donations.reduce((total, donation) => total + parseFloat(donation.quantity || 0), 0), // Total donated food units
-        totalFoodItems: donations.reduce((total, donation) => total + parseFloat(donation.item || 0), 0), // Total donated food item
-    };
-
-    // Update summary data in the DOM
-    for (const [key, value] of Object.entries(summaryData)) {
-        const summaryElement = document.getElementById(key);
-        if (summaryElement) {
-            summaryElement.textContent = value;
-        }
-    }
-});
-
-</script>
 
 </head>
 <body>
@@ -277,9 +205,9 @@ body {
     <h2>Admin Panel</h2>
     <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="dashboard.html" class="active">Dashboard</a></li>
         <li><a href="donations.html">Donations</a></li>
-        <li><a href="donors.html">Donation History</a></li>
+       
         <li><a href="recipients.html">Recipients</a></li>
         <li><a href="food-request.html">Food Request</a></li>
         
@@ -352,5 +280,7 @@ body {
       </div>
   </div>
 </div>
+
+<script src="dashboard-script.js"></script>
 </body>
 </html>

@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: rgb(228, 214, 187);
             display: flex;
             margin: 0;
         }
@@ -16,7 +16,7 @@
         .sidebar {
             width: 250px;
             height: 100vh;
-            background-color: #28a745;
+            background-color:rgb(39, 38, 37);
             color: white;
             position: fixed;
             top: 0;
@@ -36,7 +36,7 @@
 
         .sidebar ul li {
             padding: 15px 20px;
-            border-bottom: 1px solid #3cb056;
+            border-bottom: 1px solid #4d2f2f;
         }
 
         .sidebar ul li a {
@@ -47,9 +47,16 @@
         }
 
         .sidebar ul li a:hover {
-            background-color: #3cb056;
+            background-color: rgb(243, 130, 24);
             border-radius: 5px;
         }
+
+        .sidebar ul li a.active {
+             color: rgb(243, 130, 24);
+            background: rgb(255, 255, 255);
+             box-shadow: 5px 10px 30px rgba(85, 85, 85, 0.2);
+             border-radius: 5px;
+}
 
         /* Main Content Styles */
         .main-content {
@@ -59,10 +66,11 @@
         }
 
         header {
-            background-color: #28a745;
+            background-color: rgb(243, 130, 24);
             color: white;
             padding: 20px;
             text-align: center;
+            font-weight: bold;
         }
 
         .container {
@@ -85,7 +93,7 @@
         }
 
         th {
-            background-color: #28a745;
+            background-color: rgb(243, 130, 24);
             color: white;
         }
 
@@ -97,32 +105,6 @@
             background-color: #f1f1f1;
         }
     </style>
-    <script>
-        // Fetch recipients from localStorage and render them
-        function renderRecipients() {
-            const recipients = JSON.parse(localStorage.getItem("recipients")) || [];
-            const tableBody = document.getElementById("recipientsTableBody");
-            tableBody.innerHTML = ""; // Clear existing rows
-
-            recipients.forEach(recipient => {
-                const row = document.createElement("tr");
-                row.innerHTML = `
-                    <td>${recipient.name}</td>
-                    <td>${recipient.email}</td>
-                    <td>${recipient.phone}</td>
-                    <td>${recipient.address}</td>
-                    <td>${recipient.category}</td>
-                    <td>${recipient.quantity}</td>
-                    <td>${recipient.needDate}</td>
-                    <td>${recipient.note || "N/A"}</td>
-                `;
-                tableBody.appendChild(row);
-            });
-        }
-
-        // Load recipients when the page loads
-        document.addEventListener("DOMContentLoaded", renderRecipients);
-    </script>
 </head>
 <body>
     <!-- Sidebar -->
@@ -132,8 +114,8 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="dashboard.html">Dashboard</a></li>
             <li><a href="donations.html">Donations</a></li>
-            <li><a href="donors.html">Donation History</a></li>
-            <li><a href="recipients.html">Recipients</a></li>
+      
+            <li><a href="recipients.html" class="active">Recipients</a></li>
             <li><a href="food-request.html">Food Request</a></li>
             
         </ul>
@@ -163,5 +145,6 @@
             </table>
         </div>
     </div>
+    <script src="recipients-script.js"></script>
 </body>
 </html>

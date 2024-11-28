@@ -48,8 +48,13 @@
             }
             
             // Redirect to homepage.html if validation is successful
-            window.location.href = 'dashboard.html';
-            return false; // Prevent default form submission behavior
+            if (username === 'admin' && password === 'admin') {
+                window.location.href = 'dashboard.html';
+                return false; 
+            } else {
+                alert('Incorrect username or password!');
+                return false;
+            }
         }
     </script>
 </body>

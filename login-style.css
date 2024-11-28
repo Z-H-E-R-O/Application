@@ -1,3 +1,5 @@
+
+/* Body styling */
 body {
     display: flex;
     align-items: center;
@@ -10,43 +12,50 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     flex-direction: column;
-    margin: 0;
 }
 
+/* Main container */
 .main {
-    background-color: #f3f2f269;
-    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 100px;
+    border: 2px solid #2f493048;
+    border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    padding: 10px 20px;
-    transition: transform 0.2s;
+    height: 500px;
     width: 500px;
     text-align: center;
 }
 
+/* Heading */
 h1 {
     color: #ff2600bd;
+    text-align: center;
+    text-shadow: #191b19;
+    font-size: 60px; /* Adjusted size */
 }
 
+/* Form label */
 label {
     display: block;
-    width: 100%;
     margin-top: 10px;
     margin-bottom: 5px;
     text-align: left;
-    color: #e29235e8;
+    color: #ff2600bd;
     font-weight: bold;
 }
 
+/* Input and select fields */
 input, select {
     display: block;
     width: 100%;
     margin-bottom: 15px;
     padding: 10px;
-    box-sizing: border-box;
     border: 1px solid #ddd;
     border-radius: 5px;
 }
 
+/* Button styling */
 button {
     padding: 15px;
     border-radius: 10px;
@@ -56,27 +65,28 @@ button {
     color: white;
     cursor: pointer;
     background-color: #191b19;
-    width: 100%;
+    width: 400px;
     font-size: 16px;
     transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #ff7b00;
+    background-color: #ff2600bd;
 }
 
+/* Wrap container for logo */
 .wrap {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.logo-container {
-    margin-bottom: 20px;
-}
-.logo {
-    max-width: 100px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
+    margin-bottom: 20px; /* Adds spacing between logo and form */
 }
 
+/* Logo styling */
+.logo {
+    max-width: 100px;
+    height: 100px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: -20px; /* Moves the logo up slightly */
+}

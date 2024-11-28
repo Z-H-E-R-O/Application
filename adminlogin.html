@@ -8,16 +8,11 @@
     <link rel="stylesheet" href="login-style.css">
 </head>
 
-<body>
-    <div class="main">
-        <h1>Admin</h1>
-        
-        <div class+ "logo-container">
-            <img src="ZHERO.png" alt="logo" class="logo">
-        </div>
+<body>  
+      <div class="main">
+            <img src="ZHERO.png" alt="logo" class="logo"> 
+            <h1>Admin</h1>
     
-        <h3>Enter your login credentials</h3>
-
         <!-- Form without an action attribute to handle redirection in JavaScript -->
         <form id="loginForm" onsubmit="return validateForm()">
             <label for="username">
@@ -35,11 +30,11 @@
             <div class="wrap">
                 <!-- Submit button -->
                 <button type="submit" class="btn" style="color: white;">Submit</button>
-            </div>
-        </form>
-
+            
+          </form>
+      
     </div>
-
+ </div>
     <!-- JavaScript for form validation and redirection -->
     <script>
         function validateForm() {

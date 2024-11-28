@@ -65,36 +65,47 @@ nav ul li{
     margin-left: 40px;
 }
 
-.navbar{
+.navbar {
     display: flex;
     margin-right: 4vh;
     padding: 15px;
 }
 
-.navbar a{
+.navbar a {
     color: rgb(242, 2, 2);
     font-size: 18px;
     padding: 10px 22px;
     border-radius: 4px;
-    font-weight: 500;   
+    font-weight: 500;
     text-decoration: none;
     transition: ease 0.40s;
 }
 
-.navbar a:hover,.navbar a.active{
-
-    color:rgb(228, 214, 187);
+/* Hover effect */
+.navbar a:hover {
+    color: rgb(228, 214, 187);
     background: rgb(243, 130, 24);
-    box-shadow: 5px 10px 30px rgb(85 85 85 / 20%);
+    box-shadow: 5px 10px 30px rgba(85, 85, 85, 0.2);
     border-radius: 5px;
-    
 }
+
+/* Active page link style */
+.navbar a.active {
+    color: rgb(228, 214, 187);
+    background: rgb(0, 0, 0);
+    box-shadow: 5px 10px 30px rgba(85, 85, 85, 0.2);
+    border-radius: 5px;
+}
+
+    
 
 nav ul li a{
     text-decoration: none;
     color:  rgb(243, 130, 24);
     font-size: 17px;
 }
+
+
 
 .title{
     text-decoration: none;
@@ -457,7 +468,6 @@ nav ul li a{
     color: rgb(0, 0, 0);
     margin-bottom: 20px;
     letter-spacing: 1px;
-    font-style: italic;
 }
 
 .abt-text h1 span{
@@ -678,21 +688,30 @@ nav ul li a{
     color: rgb(2, 134, 242);
 }
 
+.register-form h5 span{
+    color: rgb(2, 134, 242);
+}
+
 .register-form{
-    color: rgb(68, 67, 67);
+    color: rgb(0, 0, 0);
     font-size: 20px;
 }
 
 .register-form form input{
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     padding: 17px;
-    background-color: #191919;
+    background-color: #ffffff;
     font-size: 20px;
     outline: none;
     border: none;
     border-radius: 10px;
     margin-bottom: 20px;
     
+}
+
+.register-form textarea{
+    background-color:  #ffffff;
+    color: rgb(0, 0, 0);
 }
 .register-form h4{
     font-size: 22px;
@@ -747,14 +766,14 @@ nav ul li a{
 }
 
 .request-form{
-    color: rgb(68, 67, 67);
+    color: rgb(0, 0, 0);
     font-size: 20px;
 }
 
 .request-form form input{
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     padding: 17px;
-    background-color: #191919;
+    background-color: #ffffff;
     font-size: 20px;
     outline: none;
     border: none;
@@ -762,6 +781,12 @@ nav ul li a{
     margin-bottom: 20px;
     
 }
+
+.request-form textarea{
+    background-color:  #ffffff;
+    color: rgb(0, 0, 0);
+}
+
 .request-form h4{
     font-size: 22px;
     font-weight: 500;
@@ -1112,3 +1137,4 @@ iframe {
 .carousel-container::-webkit-scrollbar-thumb:hover {
     background-color: #555;
 }
+

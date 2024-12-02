@@ -10,25 +10,6 @@
 
 /* Home page */
 
-.banner{
-    width:100%;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.banner img{
-    position: absolute;
-    top: 0;
-    left: 0;
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
 .content{
     position: relative;
     z-index: 1;
@@ -84,18 +65,21 @@ nav ul li{
 /* Hover effect */
 .navbar a:hover {
     color: rgb(228, 214, 187);
-    background: rgb(243, 130, 24);
+    background: rgb(0, 0, 0);
     box-shadow: 5px 10px 30px rgba(85, 85, 85, 0.2);
     border-radius: 5px;
 }
 
 /* Active page link style */
 .navbar a.active {
-    color: rgb(228, 214, 187);
-    background: rgb(0, 0, 0);
+    font-size: 20px;
+    color:rgb(0, 0, 0);
+    background: rgb(228, 214, 187);
+    border-bottom: 3px solid #000000; /* Define the black bottom border */
     box-shadow: 5px 10px 30px rgba(85, 85, 85, 0.2);
-    border-radius: 5px;
+    border-radius: 5px 5px 0 0; /* Keep top corners rounded, bottom corners square */
 }
+
 
     
 
@@ -122,6 +106,7 @@ nav ul li a{
     font-size: 10vh;
     text-shadow: 2px black;
     transition: ease 0.3s;
+    box-shadow: rgb(228, 214, 187);
 }
 
 .title h1:hover{
@@ -130,43 +115,115 @@ nav ul li a{
     
 }
 
-.button{
+.button {
     display: inline-block;
-    margin-top:5vh;
+    margin-top: 5vh;
     font-size: 25px;
     padding: 10px 30px;
-    color:rgb(228, 214, 187);
-    /* background-color:rgb(164, 44, 44); */
-    box-shadow: 5px 10px 30px rgba(0, 0, 0, 0.4);
+    color: rgb(228, 214, 187);
     background-color: rgb(2, 134, 242);
     border-radius: 20px;
     text-decoration: none;
-    transition: ease 0.30s;
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
-.button:hover{
+/* Donate Button */
+.button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgb(255, 0, 0), rgb(0, 255, 0), rgb(0, 0, 255));
+    background-size: 300% 300%;
+    z-index: -1;
+    filter: blur(10px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.button:hover {
     transform: scale(1.1);
-
+    box-shadow: 0 0 30px rgba(2, 134, 242, 0.8), 0 0 60px rgba(2, 134, 242, 0.6);
 }
 
-.reqbutton{
+.button:hover::before {
+    animation: rotateGradient 2s infinite linear;
+    opacity: 1;
+}
+
+@keyframes rotateGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+
+
+.reqbutton {
     display: inline-block;
-    margin-top:5vh;
+    margin-top: 5vh;
     font-size: 25px;
     padding: 10px 30px;
-    color:rgb(228, 214, 187);
-    /* background-color:rgb(164, 44, 44); */
-    box-shadow: 5px 10px 30px rgba(0, 0, 0, 0.4);
-    background-color: rgb(242, 2, 2);
+    color: rgb(228, 214, 187);
+    background-color: rgb(242, 2, 2); /* Red background */
     border-radius: 20px;
     text-decoration: none;
-    transition: ease 0.30s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 5px 10px 30px rgba(0, 0, 0, 0.4);
 }
 
-.reqbutton:hover{
+.reqbutton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgb(255, 0, 0), rgb(255, 165, 0), rgb(255, 255, 0), rgb(0, 255, 0), rgb(0, 0, 255), rgb(75, 0, 130), rgb(238, 130, 238));
+    background-size: 400% 400%;
+    z-index: -1;
+    filter: blur(15px);
+    opacity: 0;
+    border-radius: 20px;
+    transition: opacity 0.3s ease;
+}
+
+.reqbutton:hover {
     transform: scale(1.1);
-
+    box-shadow: 0 0 40px rgba(242, 2, 2, 0.8), 0 0 80px rgba(242, 2, 2, 0.6);
 }
+
+.reqbutton:hover::before {
+    opacity: 1;
+    animation: rotateReqGradient 3s infinite linear;
+}
+
+@keyframes rotateReqGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 
 
 .text h2{
@@ -367,6 +424,7 @@ nav ul li a{
 
 .foot{
     padding: 20px 0;
+    width: 100%;
 }
 
 .footer-content{
@@ -555,7 +613,7 @@ nav ul li a{
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #3498db;
+    border: 3px solid #000000;
 }
 
 /* Hover Effect on Avatars */
@@ -722,24 +780,58 @@ nav ul li a{
 }
 
 
-.register-form form .submitbtn{
+.register-form form .submitbtn {
     display: inline-block;
+    margin-top: 5vh;
+    font-size: 25px;
+    padding: 20px 40px;
+    color: rgb(228, 214, 187);
     background-color: rgb(2, 134, 242);
-    font-size: 27px;
-    font-weight: 600px;
-    border: 2px solid transparent;
-    border-radius: 60px;
-    width: 220px;
-    cursor: pointer;
-    transition: ease 0.30s;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
-.register-form form .submitbtn:hover{
-    border: 2px solid #000000;
-    background-color: transparent;
-    transform: scale(1.1);
-    color: #000000;
+.register-form form .submitbtn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgb(255, 0, 0), rgb(0, 255, 0), rgb(0, 0, 255));
+    background-size: 300% 300%;
+    z-index: -1;
+    filter: blur(10px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
+
+.register-form form .submitbtn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(2, 134, 242, 0.8), 0 0 60px rgba(2, 134, 242, 0.6);
+}
+
+.register-form form .submitbtn:hover::before {
+    opacity: 1;
+    animation: rotateReqGradient 3s infinite linear;
+}
+
+@keyframes rotateGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 
 /* Request Register Form */
 
@@ -762,6 +854,10 @@ nav ul li a{
     margin-bottom: 20px;
 }
 .request-form h1 span{
+    color: rgb(242, 2, 2);
+}
+
+.request-form h5 span{
     color: rgb(242, 2, 2);
 }
 
@@ -796,23 +892,57 @@ nav ul li a{
 }
 
 
-.request-form form .submitbutton{
+.request-form form .submitbutton {
     display: inline-block;
-    background-color: rgb(242, 2, 2);
-    font-size: 27px;
-    font-weight: 600px;
-    border: 2px solid transparent;
-    border-radius: 60px;
-    width: 220px;
-    cursor: pointer;
-    transition: ease 0.30s;
+    margin-top: 5vh;
+    font-size: 25px;
+    padding: 20px 40px;
+    color: rgb(228, 214, 187);
+    background-color: rgb(242, 2, 2); /* Red background */
+    border-radius: 20px;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 5px 10px 30px rgba(0, 0, 0, 0.4);
 }
 
-.request-form form .submitbutton:hover{
-    border: 2px solid #000000;
-    background-color: transparent;
+.request-form form .submitbutton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgb(255, 0, 0), rgb(255, 165, 0), rgb(255, 255, 0), rgb(0, 255, 0), rgb(0, 0, 255), rgb(75, 0, 130), rgb(238, 130, 238));
+    background-size: 400% 400%;
+    z-index: -1;
+    filter: blur(15px);
+    opacity: 0;
+    border-radius: 20px;
+    transition: opacity 0.3s ease;
+}
+
+.request-form form .submitbutton:hover {
     transform: scale(1.1);
-    color: #000000;
+    box-shadow: 0 0 40px rgba(242, 2, 2, 0.8), 0 0 80px rgba(242, 2, 2, 0.6);
+}
+
+.request-form form .submitbutton:hover::before {
+    opacity: 1;
+    animation: rotateReqGradient 3s infinite linear;
+}
+
+@keyframes rotateGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 
@@ -853,9 +983,17 @@ nav ul li a{
     border-radius: 4px;
 }
 
+.image-container img {
+    transition: transform 0.3s ease-in-out; /* Smooth scaling effect */
+}
+
+.image-container img:hover {
+    transform: scale(1.05); /* Increases the size to 110% */
+}
+
 button {
     padding: 0.5em 1em;
-    background-color: #4CAF50;
+    background-color: #000000;
     border: none;
     border-radius: 4px;
     color: white;
@@ -986,6 +1124,7 @@ section {
     padding: 1em;
     background-color: #f9f9f9;
     border-radius: 8px;
+    color: #FF6347;
 }
 .what-we-do-section {
     background-color: #f9f9f9;
@@ -997,6 +1136,10 @@ section {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+}
+
+.text {
+    color: #FF6347;
 }
 
 .section-header {
@@ -1050,16 +1193,48 @@ section {
     line-height: 1.6;
 }
 
-.icon-container img {
+.icon-container1 img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #FF6347; /* Tomato background for icons */
+    background-color:  rgb(2, 134, 242); /* Tomato background for icons */
     padding: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.icon-container {
+.icon-container1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.icon-container2 img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgb(242, 2, 2); /* Tomato background for icons */
+    padding: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.icon-container2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.icon-container3 img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ffd901; /* Tomato background for icons */
+    padding: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.icon-container3 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1093,7 +1268,7 @@ section {
 }
 
 .carousel-item {
-    background-color: #fff;
+    background-color: rgb(228, 214, 187);
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -1138,3 +1313,6 @@ iframe {
     background-color: #555;
 }
 
+.cta-button{
+    background-color: #000000;
+}

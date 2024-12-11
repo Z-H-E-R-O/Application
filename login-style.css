@@ -35,6 +35,10 @@ h1 {
     font-size: 60px; /* Adjusted size */
 }
 
+h4 {
+    color: white;
+}
+
 /* Form label */
 label {
     display: block;
